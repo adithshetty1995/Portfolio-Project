@@ -1,0 +1,69 @@
+This text file contains breakdown of the code:
+
+Key Points to consider while running (executing) the code:
+
+1) The code is written in Jupyter Notebook
+2) Need to change the 'path' variable (Part 2 of the code) to where the Airbnb data files are stored
+3) I have assumed that all the Airbnb filenames start with 'listings' and end with an extension '.csv'. Ex: listings_file_6.csv
+4) Also, need to change the 'path' variable (Part 7 of the code) to where the Zillow data files are stored
+5) I have assumed that all the Zillow filenames start with 'Zip' and end with an extension '.csv'. Ex: Zip_4bedroom.csv
+6) I have divided the code into 9 parts for better visual representation.
+7) Part 2 - Part 6 => Airbnb Dataset Preparation, Transformation, Calculation, and Visualization.
+8) Part 7 => Zillow Dataset Preparation, Transformation, and Calculation.
+9) Part 8, Part 9 => Final merged dataset 
+
+
+As mentioned above, the code is divided into 9 parts:
+
+Part 1:
+Here, we import all the required packages
+
+
+Part 2:
+This part includes concatenating all Airbnb data files into a single dataframe named 'data'. Also, we perform data imputation to replace all Null values of numerical variables with mean(), and Null values of categorical variables with Blank [""]. 
+We also filter out data to retain the data only for 'country' => United States, and 'bedrooms' => 2.
+Convert the price column from object datatype to float.
+List out the required columns and retaining data only for those columns.
+Retain 5-digit Zipcodes and delete the rest.
+
+
+Part 3 and Part 4:
+In these parts, we perform Exploratory Data Analysis (EDA), to identify and remove Outliers.
+We have 2 plots, 
+Plot 1 => Distribution Plot for numerical variables, before the removal of Outliers
+Plot 2 => Numerical Distribution Plot, after the removal of Outliers
+
+As per Plot 1, we remove the data for prices that are above $1000, considering them as outliers. Also, we remove the data for 'number_of_reviews' that are above 150, considering them as outliers.
+
+
+Part 5:
+We perform Data Visualozation on Airbnb dataset 'data' to view the distribution of Airbnb property listings for each of the 5 boroughs.
+
+
+Part 6:
+We carry out Data Calculations on 'data' to compute the number of listings, total number of ratings, and price per year for each Zipcode. At the end of this part, we will have the final Airbnb dataset named 'data_bnb'.
+
+
+Part 7: 
+This part includes concatenating all Zillow data files into a single dataframe named 'df_zlw'. In my case, I had only 1 Zillow data file.
+Next, to calculate the Percentage Increase of the properties for each Zipcode, over the period of 5 years, we extract two columns, 
+1) last column of our zillow dataset, which is the latest year (06/2017) as per the dataset
+2) column of exactly 5 years (07/2012) prior to the latest year (06/2017)
+
+At the end of this part, we will have the final Zillow dataset named 'df_zlw'.
+
+
+Part 8:
+In this part, we combine the two datasets (Airbnb & Zillow) into a final dataset named 'df_final'.  
+We perform calculations on 'df_final' to compute the Return On Investment (ROI), and 'years_to_repay' (the number of years required to repay the 'Median Price') for each zipcode. 
+We also determine the Top 3 Zipcodes.
+
+
+Part 9:
+Here, we perform Data Visualization on the Top 3 zipcodes, to check whether they satisfy the required data constraints.
+We have 3 plots,
+1) Plot for Top 3 Zipcodes by Percent_Increase
+2) Plot for Top 3 Zipcodes by number_of_reviews
+3) Plot for Top 3 Zipcodes by review_ratings_mean 
+
+At the end of this part, we provide Key insights and Conclusion.  
